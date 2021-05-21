@@ -7,7 +7,7 @@
 
 int main(int argc, char **argv) {
    std::vector<std::string> image;
-   std::cout << color::red << "test : 1"<< color::reset << std::endl;
+   std::cout << color::green << "test : 1"<< color::reset << std::endl;
    std::string path = argv[1];
    for (const auto & entry : std::experimental::filesystem::directory_iterator(path)) {
       std::string img = entry.path();
@@ -16,9 +16,13 @@ int main(int argc, char **argv) {
       }
    }
 
-
+   if(image.size() == 0) {
+      std::cout << color::red << "No image files in the current directory" << color::reset <<std::endl;
+   } 
+   else {
    for(auto i : image) {
       std::cout << i << std::endl;
+   }
    }
    return 0;
 }
