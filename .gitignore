@@ -1,0 +1,6 @@
+printf '*.jpg\n*.jpeg\n*.png\n*.gif\n' >> .gitignore*.jpg
+*.jpeg
+*.png
+*.gif
+*.jpg
+*.out
