@@ -11,7 +11,7 @@ sudo apt-get update -y && sudo apt-get upgrade
 step : 2
 
 ```
-sudo apt-get install opencv-data libopence-dev
+sudo apt-get install opencv-data libopencv-dev
 ```
 
 ## Running the project
