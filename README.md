@@ -30,6 +30,6 @@ g++ main.cpp -o output `pkg-config --cflags --libs opencv` -lstdc++fs
 step : 3
 
 ```
-./output
+./output .
 ```
 
