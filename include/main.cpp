@@ -23,6 +23,7 @@ int main(int argc, char **argv) {
    else {
    for(auto i : image_path) {
       cv::Mat image = cv::imread(i, CV_LOAD_IMAGE_COLOR);
+      std::cout << i << std::endl;
       std::cout << "Width : " << image.size().width << std::endl;
       std::cout << "Height : " << image.size().height <<std::endl;
       }

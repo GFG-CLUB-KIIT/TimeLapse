@@ -1,0 +1,10 @@
+Object : Image
+
+@param
+
+@path : string
+@width : int
+@height : int 
+@channels : int
+
+
