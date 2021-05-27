@@ -9,9 +9,5 @@ class Image {
    Image(std::tring path);
    Image(int w, int h, int channels);
    ~Image();
-   
-
-
    bool read(std::string path);
-
 };
