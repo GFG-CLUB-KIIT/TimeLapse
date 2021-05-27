@@ -25,7 +25,7 @@ cd include
 step : 2
 
 ```
-g++ main.cpp -o output `pkg-config --cflags --libs opencv` -lstdc++fs
+g++ main.cpp -o output `pkg-config --cflags --libs opencv4` -lstdc++fs
 ```
 step : 3
 
