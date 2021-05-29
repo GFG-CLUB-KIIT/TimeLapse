@@ -30,6 +30,6 @@ g++ main.cpp -o output `pkg-config --cflags --libs opencv4` -lstdc++fs
 step : 3
 
 ```
-./output .
+./output <directory_with_image>
 ```
 

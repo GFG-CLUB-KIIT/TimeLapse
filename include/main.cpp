@@ -4,16 +4,24 @@
 #include <string>
 #include <vector>
 #include <opencv2/highgui.hpp>
+#include <opencv2/core/core.hpp>
+#include "opencv2/imgproc/imgproc.hpp"
 
+using namespace std;
+using namespace cv;
 
 int main(int argc, char *argv[]) {
    std::vector<std::string> image_path;
+   std::vector<cv::Mat> image_list;
+   int codec = VideoWriter::fourcc('H','2','6','4'); 
+   int h=0,w=0;
    // req atleast two args
    if(argc!=2){
       std::cout<<color::red<<"No directory provided"<<std::endl;
       return 1;
    }
    std::string path = argv[1];
+
    std::cout << color::green << "test : 1"<< color::reset << std::endl;
    for (const auto & entry : std::experimental::filesystem::directory_iterator(path)) {
       std::string img_path = entry.path();
@@ -27,13 +35,25 @@ int main(int argc, char *argv[]) {
       return 1;
    } 
    else {
-   for(auto i : image_path) {
-      cv::Mat image = cv::imread(i,cv::IMREAD_COLOR);
-      std::cout << i << std::endl;
-      std::cout << "Width : " << image.size().width << std::endl;
-      std::cout << "Height : " << image.size().height <<std::endl;
-      }
+    for(auto i : image_path) {
+        cv::Mat image = cv::imread(i,cv::IMREAD_COLOR);
+        image_list.push_back(image);
+        cv::resize(image, image,image_list[0].size());
+    }
    }
+
+   Size S = image_list[0].size();
+   VideoWriter outputVideo;
+   outputVideo.open("asa.avi", codec,15.0,S,true);
+   
+   if (!outputVideo.isOpened()){
+        cout  << "Could not open the output video for write: "<< endl;
+        return -1;
+   }
+   for(int i=0; i<image_list.size(); i++){
+              outputVideo << image_list[i];
+   }
+
+   cout << "Finished"<<endl;
    return 0;
 }
-
