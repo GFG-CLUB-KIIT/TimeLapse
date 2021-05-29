@@ -4,6 +4,7 @@ printf '*.jpg\n*.jpeg\n*.png\n*.gif\n' >> .gitignore*.jpg
 *.gif
 *.jpg
 
+output
 
 # Prerequisites
 *.d
