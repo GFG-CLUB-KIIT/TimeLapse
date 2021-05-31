@@ -13,6 +13,9 @@ using namespace cv;
 int main(int argc, char *argv[]) {
    std::vector<std::string> image_path;
    std::vector<cv::Mat> image_list;
+   
+   string mvleft="\033[1000D";
+   string clearln="\033[2K";
    int codec = VideoWriter::fourcc('H','2','6','4'); 
    int h=0,w=0;
    // req atleast two args
@@ -44,16 +47,20 @@ int main(int argc, char *argv[]) {
 
    Size S = image_list[0].size();
    VideoWriter outputVideo;
-   outputVideo.open("asa.avi", codec,15.0,S,true);
+   outputVideo.open("asa.avi", codec,10.0,S,true);
    
    if (!outputVideo.isOpened()){
         cout  << "Could not open the output video for write: "<< endl;
         return -1;
    }
-   for(int i=0; i<image_list.size(); i++){
+   int total=image_list.size();
+   for(int i=0; i<total; i++){
               outputVideo << image_list[i];
+              //percentage/progress   
+              cout<<mvleft<<clearln;
+              cout<<"processing: "<<((i+1)/total)*100<<"%";
    }
 
-   cout << "Finished"<<endl;
+   cout << "\nFinished"<<endl;
    return 0;
 }
