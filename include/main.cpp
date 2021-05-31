@@ -10,6 +10,12 @@
 using namespace std;
 using namespace cv;
 
+bool comp(string img1, string img2){// sorting
+   if(img1.length()==img2.length()){
+      return img1<img2;
+   }
+   return img1.length()<img2.length();
+}
 int main(int argc, char *argv[]) {
    std::vector<std::string> image_path;
    std::vector<cv::Mat> image_list;
@@ -32,6 +38,8 @@ int main(int argc, char *argv[]) {
          image_path.push_back(img_path);
       }
    }
+
+   sort(image_path.begin(),image_path.end(),comp);
 
    if(image_path.size() == 0) {
       std::cout << color::red << "No image files in the current directory" << color::reset <<std::endl;
