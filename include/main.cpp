@@ -16,7 +16,10 @@ bool comp(string img1, string img2){// sorting
    }
    return img1.length()<img2.length();
 }
+
+
 int main(int argc, char *argv[]) {
+
    std::vector<std::string> image_path;
    std::vector<cv::Mat> image_list;
    
