@@ -1,3 +1,15 @@
+/*
+-------------------------------------------------------------
+@file       : filter.cpp
+@author     : Rupanshi Chawda
+@date       : 02.06.2021
+@brief      : Parameter for manipulating Brightness and contrast of the images 
+-------------------------------------------------------------
+*/
+
+
+
+
 #include <iostream>
 #include "color.hpp"
 #include <experimental/filesystem>

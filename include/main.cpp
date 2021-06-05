@@ -1,3 +1,12 @@
+/*
+-------------------------------------------------------------
+@file       : Main.cpp
+@author     : Aditya Das, Souvik Kar, Snehil
+@date       : 19.05.2021
+@brief      : Main operating file of the application
+-------------------------------------------------------------
+*/
+
 #include <iostream>
 #include "color/color.hpp"
 #include <experimental/filesystem>
