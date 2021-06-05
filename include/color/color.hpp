@@ -1,3 +1,12 @@
+/*
+--------------------------------------------------------------
+@file     :  color.hpp
+@author   :  Aditya Das
+@date     :  19.05.2001
+@brief    :  Header file for colorrd text
+--------------------------------------------------------------
+
+*/
 #pragma once
 #include <string>
 
