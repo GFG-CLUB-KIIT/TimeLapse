@@ -7,9 +7,6 @@
 -------------------------------------------------------------
 */
 
-
-
-
 #include <iostream>
 #include "color.hpp"
 #include <experimental/filesystem>
