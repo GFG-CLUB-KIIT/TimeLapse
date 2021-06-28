@@ -11,6 +11,7 @@
 #include <experimental/filesystem>
 #include "color/color.hpp"
 #include "utils/path_finder.hpp"
+#include "utils/driver.hpp"
 #include <opencv2/highgui.hpp>
 #include <opencv2/core/core.hpp>
 #include "opencv2/imgproc/imgproc.hpp"
