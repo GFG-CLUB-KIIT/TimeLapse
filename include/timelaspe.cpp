@@ -24,22 +24,30 @@ int main(int argc, char *argv[]){
     if(argv[1] == "-h" or argv[1] == "--help")
     {
         // help function implementation
+
     }
     else if(argv[1] == "-v" or argv[1] == "--version") {
         // version implementation
+        
     }
-    else if(argv[1] == "--make" or argv[1] == "-m"){
+    else if(argv[1] == "make"){
         // makes timepse video
         /*
         pseudo implemetation : timelapse -m/--make <directory>
         */
-        if(argc < 3){
+        if(argc < 4){
             cout << color::red<< "ERR01: No Directory provided, please provide valid directory!" << color::reset<<endl;
             return 1;
         }
-        if(argc == 3){
+        if(argc >= 4){
             // assuming directory must be provided.
-            string path = argv[2];
+            string output_name = "output.avi";
+            if(argc == 5){
+                if(argv[4] ==  "-o"){
+                    output_name = argv[5];
+                }
+            }
+            string path = argv[3];
             vector<string> img_path;
             // stores path in a vector
             get_path(path,img_path);
@@ -53,7 +61,7 @@ int main(int argc, char *argv[]){
                     image_list.push_back(image);
                     cv::resize(image,image, image_list[0].size());
                 }
-                make_timelapse(image_list);
+                make_timelapse(image_list,output_name);
             }
         }
     }
