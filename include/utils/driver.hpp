@@ -21,14 +21,14 @@ using namespace std;
 using namespace cv;
 
 
-void make_timelapse(vector<cv::Mat> image_list){
+void make_timelapse(vector<cv::Mat> image_list, string output_name){
     Size S = image_list[0].size();
     string mvleft="\033[1000D";
    string clearln="\033[2K";
    int codec = VideoWriter::fourcc('H','2','6','4'); 
    int h=0,w=0;
     VideoWriter outputVideo;
-    outputVideo.open("output.avi", codec, 10.0 , S, true);
+    outputVideo.open(output_name, codec, 10.0 , S, true);
 
     if(!outputVideo.isOpened()) {
         cout  <<color::red<< "ERR03: Could not open the output video for write: "<<color::reset <<endl;
