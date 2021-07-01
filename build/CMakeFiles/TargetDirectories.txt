@@ -1,0 +1,3 @@
+/home/souvikinator/projects/TimeLapse/build/CMakeFiles/rebuild_cache.dir
+/home/souvikinator/projects/TimeLapse/build/CMakeFiles/edit_cache.dir
+/home/souvikinator/projects/TimeLapse/build/CMakeFiles/elapso.dir
