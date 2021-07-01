@@ -40,3 +40,6 @@ output
 *.exe
 *.out
 *.app
+
+#misc
+.vscode
