@@ -16,6 +16,24 @@ sudo apt-get install opencv-data libopencv-dev
 
 ## Running the project
 
+### Using cmake
+
+step: 1
+
+``` cd build```
+
+step: 2
+
+`cmake ../`
+
+step: 3
+
+`make`
+
+to run the executable: `./elapso`
+
+### normal method
+
 step : 1
 
 ```
