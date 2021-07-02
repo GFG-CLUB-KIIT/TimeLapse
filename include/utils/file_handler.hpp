@@ -7,6 +7,7 @@
 -------------------------------------------------------------
 */
 
+#pragma once
 #include <vector>
 #include <experimental/filesystem>
 #include <opencv2/highgui.hpp>
