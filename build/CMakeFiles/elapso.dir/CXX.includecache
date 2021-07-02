@@ -64,6 +64,14 @@ sys/types.h
 string
 -
 
+/home/souvikinator/projects/TimeLapse/include/utils/driver.hpp
+vector
+-
+../color/color.hpp
+/home/souvikinator/projects/TimeLapse/include/color/color.hpp
+./misc.hpp
+/home/souvikinator/projects/TimeLapse/include/utils/misc.hpp
+
 /home/souvikinator/projects/TimeLapse/include/utils/file_handler.hpp
 vector
 -
@@ -78,6 +86,10 @@ opencv2/imgproc/imgproc.hpp
 ../color/color.hpp
 /home/souvikinator/projects/TimeLapse/include/color/color.hpp
 
+/home/souvikinator/projects/TimeLapse/include/utils/misc.hpp
+string
+-
+
 /home/souvikinator/projects/TimeLapse/src/main.cpp
 iostream
 -
@@ -85,18 +97,16 @@ string
 -
 vector
 -
-opencv2/highgui.hpp
--
-opencv2/core/core.hpp
--
-opencv2/imgproc/imgproc.hpp
-/home/souvikinator/projects/TimeLapse/src/opencv2/imgproc/imgproc.hpp
 ../include/color/color.hpp
 /home/souvikinator/projects/TimeLapse/include/color/color.hpp
 ../include/CLI11/CLI11.hpp
 /home/souvikinator/projects/TimeLapse/include/CLI11/CLI11.hpp
 ../include/utils/file_handler.hpp
 /home/souvikinator/projects/TimeLapse/include/utils/file_handler.hpp
+../include/utils/driver.hpp
+/home/souvikinator/projects/TimeLapse/include/utils/driver.hpp
+../include/utils/misc.hpp
+/home/souvikinator/projects/TimeLapse/include/utils/misc.hpp
 
 /usr/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp
