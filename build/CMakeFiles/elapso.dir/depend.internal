@@ -4,7 +4,9 @@
 CMakeFiles/elapso.dir/src/main.cpp.o
  /home/souvikinator/projects/TimeLapse/include/CLI11/CLI11.hpp
  /home/souvikinator/projects/TimeLapse/include/color/color.hpp
+ /home/souvikinator/projects/TimeLapse/include/utils/driver.hpp
  /home/souvikinator/projects/TimeLapse/include/utils/file_handler.hpp
+ /home/souvikinator/projects/TimeLapse/include/utils/misc.hpp
  /home/souvikinator/projects/TimeLapse/src/main.cpp
  /usr/include/opencv4/opencv2/calib3d.hpp
  /usr/include/opencv4/opencv2/core.hpp
