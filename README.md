@@ -30,7 +30,7 @@ step: 3
 
 `make`
 
-to run the executable: `./elapso`
+to run the executable: `./elapso --help`
 
 ### normal method
 
