@@ -8,89 +8,85 @@
 */
 
 #include <iostream>
-#include "../include/color/color.hpp"
-#include <experimental/filesystem>
 #include <string>
 #include <vector>
 #include <opencv2/highgui.hpp>
 #include <opencv2/core/core.hpp>
 #include "opencv2/imgproc/imgproc.hpp"
 
-using namespace std;
+#include "../include/color/color.hpp"
+#include "../include/CLI11/CLI11.hpp"
+#include "../include/utils/file_handler.hpp"
+
 using namespace cv;
 
-bool comp(string img1, string img2)
-{ // sorting
-   if (img1.length() == img2.length())
-   {
-      return img1 < img2;
-   }
-   return img1.length() < img2.length();
+typedef struct
+{
+   std::string source_dir = "";
+   std::string output_file_name = "./output.avi";
+   int frames = 25;
+   std::string filter_name = "";
+   int filter_value = 0;
+} arguments;
+
+std::string const mvleft = "\033[1000D";
+std::string const clearln = "\033[2K";
+
+std::string const banner = "\     
+      __             \n\
+ ___ / /__ ____  ___ ___ \n\
+/ -_) / _ `/ _ \\(_-</ _ \\ \n\
+\\__/_/\\_,_/ .__/___/\\___/  V0.1.0\n\
+         /_/              \n";
+
+// Progress bar
+void progress_bar(int current_frame_index, int total_frames)
+{
+   std::cout << mvleft << clearln;
+   std::cout << color::blue << "processing: " << color::green << ((current_frame_index + 1) / total_frames) * 100 << "%" << color::reset;
 }
 
 int main(int argc, char *argv[])
 {
+   // CLI logic
+   arguments args;
+   CLI::App app{"CLI to create timelapse video"};
+   // CLI options
+   app.add_option("-s,--source", args.source_dir, "source directory containing frames")->required();
+   app.add_option("-o, --output", args.output_file_name, "output file name [default: output.avi]");
+   app.add_option("-f,--frames", args.frames, "frames for making video [default: 25]");
+   app.add_option("-z,--filter", args.filter_name, "Name to filter to be applied to each frame");
+   app.add_option("-v,--value", args.filter_value, "Value of the filter provided in -z/--filter option");
+   CLI11_PARSE(app, argc, argv);
+   std::cout << color::blue << banner << color::reset;
 
+   // application logic
    std::vector<std::string> image_path;
    std::vector<cv::Mat> image_list;
 
-   string mvleft = "\033[1000D";
-   string clearln = "\033[2K";
    int codec = VideoWriter::fourcc('H', '2', '6', '4');
    int h = 0, w = 0;
-   // req atleast two args
-   if (argc != 2)
-   {
-      std::cout << color::red << "No directory provided" << std::endl;
-      return 1;
-   }
-   std::string path = argv[1];
 
-   std::cout << color::green << "test : 1" << color::reset << std::endl;
-   for (const auto &entry : std::experimental::filesystem::directory_iterator(path))
-   {
-      std::string img_path = entry.path();
-      if ((img_path.find(".jpg") != std::string::npos) or (img_path.find(".jpeg") != std::string::npos) or (img_path.find(".png") != std::string::npos))
-      {
-         image_path.push_back(img_path);
-      }
-   }
-
-   sort(image_path.begin(), image_path.end(), comp);
-
-   if (image_path.size() == 0)
-   {
-      std::cout << color::red << "No image files in the current directory" << color::reset << std::endl;
-      return 1;
-   }
-   else
-   {
-      for (auto i : image_path)
-      {
-         cv::Mat image = cv::imread(i, cv::IMREAD_COLOR);
-         image_list.push_back(image);
-         cv::resize(image, image, image_list[0].size());
-      }
-   }
+   read_images(args.source_dir, image_list);
 
    Size S = image_list[0].size();
    VideoWriter outputVideo;
-   outputVideo.open("asa.avi", codec, 10.0, S, true);
+   outputVideo.open(args.output_file_name, codec, args.frames, S, true);
 
    if (!outputVideo.isOpened())
    {
-      cout << "Could not open the output video for write: " << endl;
-      return -1;
+      std::cout << "Could not open the output video for write: " << endl;
+      return 1;
    }
+
+   // frames to video
    int total = image_list.size();
    for (int i = 0; i < total; i++)
    {
       outputVideo << image_list[i];
-      //percentage/progress
-      cout << mvleft << clearln;
-      cout << "processing: " << ((i + 1) / total) * 100 << "%";
+      progress_bar(i, total);
    }
 
-   cout << "\nFinished" << endl;
+   cout << color::green << "\nFinished!" << color::reset << endl;
    return 0;
 }
