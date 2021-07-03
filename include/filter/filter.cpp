@@ -55,17 +55,38 @@ int main(int argc, char **argv) {
    for(auto i : image_path){
 
     Mat img = imread(i);
-    Mat contrast;
+    Mat change;
 
     if (img.empty()) {
         cout << "Can not open or image is not present" << endl;
         cin.get();
         return -1;
     }
+//**************** F I L T E R S ******************
 
-    img.convertTo(contrast, -1, 5, 0);
+   //-----BRIGHTNESS & CONTRAST-----
 
-    bool check = imwrite(i, contrast);
+   float contrast = 1.2, brightness = 0;
+   img.convertTo(change, -1, contrast, brightness);
+   
+   //---------SATURATION-----------
+
+   Mat hsv;
+   cvtColor(change, hsv, COLOR_BGR2HSV);
+   float factor = 1.2;
+   hsv = hsv * factor;
+   cvtColor(hsv, change, COLOR_HSV2BGR);
+   
+   //-------SHARPNESS & BLUR--------
+   
+   float sharp = 9, blurness = 3;
+   Mat sharpeningKernel = (Mat_<double>(3,3) << -1, -1, -1, -1, sharp, -1, -1, -1, -1);
+   filter2D(change, change, -1, sharpeningKernel);
+   blur(change, change, Size(blurness, blurness)); 
+
+ 
+   // Writing the image 
+   bool check = imwrite(i, change);
 
     if (check == false) {
         cout << "Mission - Saving the image, FAILED" << endl;
