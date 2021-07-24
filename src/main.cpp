@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
    app.add_option("-z,--filter", args.filter_name, "Name to filter to be applied to each frame");
    app.add_option("-v,--value", args.filter_value, "Value of the filter provided in -z/--filter option");
    CLI11_PARSE(app, argc, argv);
-   std::cout << color::blue << banner << color::reset;
+   std::cout << banner << std::endl;
 
    // application logic
    std::vector<std::string> image_path;
