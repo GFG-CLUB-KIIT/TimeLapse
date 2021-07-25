@@ -30,9 +30,10 @@ bool comp(string img1, string img2)
 }
 
 // gets paths of the image in current directory
-// FIXME: Add proper error handling @Aditya
 void get_files(string source_dir, vector<string> &image_path)
 {
+
+    
     for (const auto &entry : experimental::filesystem::directory_iterator(source_dir))
     {
         string img_p = entry.path();
@@ -42,10 +43,12 @@ void get_files(string source_dir, vector<string> &image_path)
         }
     }
     sort(image_path.begin(), image_path.end(), comp);
+    cout << "done"<<endl;
 }
 
 void read_images(string source_dir, std::vector<cv::Mat> &image_list)
 {
+    cout << color::red<<">>Reading files"<<color::reset <<endl;
     vector<string> image_path;
     // list images from the source directory
     get_files(source_dir, image_path);
@@ -55,11 +58,16 @@ void read_images(string source_dir, std::vector<cv::Mat> &image_list)
         _Exit(1);
     }
 
+    int x =1;
     // read images from collected path
     for (auto i : image_path)
     {
+        cout <<color::yellow <<"Reading file :"<<color::reset<< x++ <<endl;
+        
         cv::Mat image = cv::imread(i, cv::IMREAD_COLOR);
         image_list.push_back(image);
         cv::resize(image, image, image_list[0].size());
     }
+
+    cout << color::green<<"Reading Done" <<color::reset<<endl;
 }

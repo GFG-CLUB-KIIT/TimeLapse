@@ -26,6 +26,7 @@ void progress_bar(int current_frame_index, int total_frames)
 // driver code to convert images to timelapse
 void make_timelapse(vector<cv::Mat> image_list, arguments args)
 {
+    cout<< color::blue << "Timelapse in progress"<<color::reset<<endl;
     int codec = VideoWriter::fourcc('H', '2', '6', '4');
     int h = 0, w = 0;
     Size S = image_list[0].size();
