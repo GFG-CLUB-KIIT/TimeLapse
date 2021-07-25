@@ -9,6 +9,12 @@ typedef struct
 	int frames = 25;
 	std::string filter_name = "";
 	int filter_value = 0;
+	float brightness_value = 0;
+	float contrast_value = 1;
+	float sharpness_value = 1;
+	float blur_value = 1;
+	float saturation_value = 1;
+
 } arguments;
 
 // banner for display
