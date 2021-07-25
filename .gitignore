@@ -46,3 +46,10 @@ output
 
 
 test/
+
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
+elapso
+Makefile
+*.avi
