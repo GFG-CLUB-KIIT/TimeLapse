@@ -1,6 +1,6 @@
 /*
 -------------------------------------------------------------
-@file       : driver.cpp
+@file       : driver.hpp
 @author     : Aditya Das, Souvik
 @date       : 29.06.2021
 @brief      : Main driver code for timelapse video
@@ -20,13 +20,13 @@ void progress_bar(int current_frame_index, int total_frames)
     std::string const mvleft = "\033[1000D";
     std::string const clearln = "\033[2K";
     std::cout << mvleft << clearln;
-    std::cout << color::blue << "processing: " << color::green << ((current_frame_index + 1) / total_frames) * 100 << "%" << color::reset;
+    std::cout << color::yellow << " Processing: " << color::green << ((current_frame_index + 1) / total_frames) * 100 << "%" << color::reset;
 }
 
 // driver code to convert images to timelapse
 void make_timelapse(vector<cv::Mat> image_list, arguments args)
 {
-    cout<< color::blue << "Timelapse in progress"<<color::reset<<endl;
+    cout<< color::blue << " Timelapse in progress "<<color::reset<<endl;
     int codec = VideoWriter::fourcc('H', '2', '6', '4');
     int h = 0, w = 0;
     Size S = image_list[0].size();
@@ -35,7 +35,7 @@ void make_timelapse(vector<cv::Mat> image_list, arguments args)
 
     if (!outputVideo.isOpened())
     {
-        std::cout << "Could not open the output video for write " << std::endl;
+        std::cout<< color::red << "Could not open the output video for write " << color::reset << std::endl;
         _Exit(0);
     }
 
