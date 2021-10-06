@@ -53,3 +53,5 @@ CMakeCache.txt
 elapso
 Makefile
 *.avi
+
+.vscode
