@@ -10,9 +10,6 @@ Elapso is a CLI tool written in C++ to enable users to automate and optimize the
 <a href="https://github.com/GFG-CLUB-KIIT/TimeLapse" target="_blank"><img src="https://img.shields.io/badge/version-v0.1.0-blue?style=for-the-badge&logo=none" alt="cli version" /></a>
 &nbsp;<img src="https://img.shields.io/badge/license-mit-red?style=for-the-badge&logo=none" alt="license" /></p>
 
-<br/> 
-
-****
 <br/>
 
 ## **Environment Setup** 🛠️
@@ -30,10 +27,6 @@ sudo apt-get install g++ cmake
 ```
 
 <br/>
-
-****
-<br/>
-
 
 ## **Running the project** 🏃🏻‍♀️
 <br/>
@@ -53,9 +46,6 @@ cmake --build .
 ```
 ./elapso -h
 ```
-<br/>
-
-****
 <br/>
 
 ## **Commands** 📤
@@ -80,9 +70,6 @@ Options:
 ```
 <br/>
 
-****
-<br/>
-
 ## **Features** 📄
 <br/>
 
@@ -95,7 +82,7 @@ Options:
 
 <br/>
 
-## **ScreenShot**
+## **Insight** 🖥️
 
 <br/>
 
@@ -103,6 +90,11 @@ Options:
 
 <br/>
 
-## **Tools Credit**
-[CLI11](https://github.com/CLIUtils/CLI11)
+## **Tools** 🧰
+[CLI11: Command line parser for C++11](https://github.com/CLIUtils/CLI11)
 <br/>
+
+## **Support**
+Elapso is an MIT-licensed Open Source Project. It can grow thanks to the contributors and the GFG members. If you'd like to join them, feel free to make a pull request and we'll love to review it.
+
+Stuck? Have any questions or comments? Join us on [GFG Discord](https://www.gfgkiit.co/) and we'll be happy to help ✨
