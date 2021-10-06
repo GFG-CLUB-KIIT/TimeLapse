@@ -25,7 +25,7 @@ using namespace std;
 
 //----------------BRIGHTNESS-----------------
 void apply_brightness(std::vector<cv::Mat> &image_list, float br_val) {
-   std::cout << "Changing Brightness : " ;
+   std::cout << color::blue << "Changing Brightness : " << color::reset;
    float contrast = 1;
    for(auto &img : image_list){
       img.convertTo(img, -1, contrast, br_val);
@@ -34,7 +34,7 @@ void apply_brightness(std::vector<cv::Mat> &image_list, float br_val) {
 }
 //---------------CONTRAST-------------------
 void apply_contrast(std::vector<cv::Mat> &image_list, float con_val) {
-   std::cout << "Changing Contrast : " ;
+   std::cout << color::blue << "Changing Contrast : " << color::reset;
    float brightness = 0;
    for(auto &img : image_list){
       img.convertTo(img, -1, con_val, brightness);
@@ -45,7 +45,7 @@ void apply_contrast(std::vector<cv::Mat> &image_list, float con_val) {
 
 //---------SATURATION-----------
 void apply_saturation(std::vector<cv::Mat> &image_list, float saturation_val) {
-   std::cout << "Changing Saturation : " ;
+   std::cout << color::blue << "Changing Saturation : " << color::reset;
    for(auto &img : image_list) {
       Mat hsv;
       cvtColor(img, hsv, COLOR_BGR2HSV);
@@ -65,7 +65,7 @@ void apply_sharpen(std::vector<cv::Mat> &image_list, float sharpness_val) {
    {
       sharpeningKernel = (Mat_<double>(3,3) << -1, -1, -1, -1, sharpness_val, -1, -1, -1, -1);
    }
-   std::cout << "Changing Sharpness : " ;
+   std::cout << color::blue << "Changing Sharpness : " << color::reset;
    for(auto &img: image_list) {
       filter2D(img, img, -1, sharpeningKernel);
    }
@@ -76,8 +76,7 @@ void apply_sharpen(std::vector<cv::Mat> &image_list, float sharpness_val) {
 
 //------------------ BLUR--------------------
 void apply_blur(std::vector<cv::Mat> &image_list, float blurness) {
-   
-   std::cout << "Adjusting Blur : " ;
+   std::cout << color::blue << "Adjusting Blur : " << color::reset;   
    for(auto &img: image_list) {
       blur(img, img, Size(blurness, blurness));
    }
@@ -87,7 +86,7 @@ void apply_blur(std::vector<cv::Mat> &image_list, float blurness) {
 
 
 void apply_filter(std::vector<cv::Mat> &image_list, arguments args, char *argv[], int argc) {
-   std::cout << "Optimizing Parameters :" <<std::endl;
+   std::cout << color::blue << "Optimizing Parameters :" << color::reset << std::endl;
    
    apply_brightness(image_list, args.brightness_value);
    apply_contrast(image_list, args.contrast_value);
