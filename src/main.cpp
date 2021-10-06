@@ -36,7 +36,8 @@ int main(int argc, char *argv[])
    app.add_option("-T,--contrast", args.contrast_value, "Value of Contrast to be applied to the images [default: 1]");
    app.add_option("-I,--saturation", args.saturation_value, "Value of saturation to be applied to the images [default: 1]");
    CLI11_PARSE(app, argc, argv);
-   std::cout << banner << std::endl;
+   std::cout << banner;
+   std::<<endl;
 
    // application logic
    std::vector<std::string> image_path;
